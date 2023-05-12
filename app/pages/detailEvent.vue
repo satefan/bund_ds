@@ -57,8 +57,10 @@
                   </div>
                 </div>
                 <div class="hours">
-                  Friday 18:00 – 21:00<br>
-                  Saturday 10:00 – 17:00
+                  <ul class="list--bare">
+                    <li>Friday 18:00 – 21:00</li>
+                    <li>Saturday 10:00 – 17:00</li>
+                  </ul>
                 </div>
               </div>
               <div class="box">
@@ -257,8 +259,10 @@
                     </div>
                   </div>
                   <div class="hours">
-                    Friday 18:00 – 21:00<br>
-                    Saturday 10:00 – 17:00
+                    <ul class="list--bare">
+                      <li>Friday 18:00 – 21:00</li>
+                      <li>Saturday 10:00 – 17:00</li>
+                    </ul>
                   </div>
                 </div>
                 <div class="box">
