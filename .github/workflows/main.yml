@@ -16,6 +16,12 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '16'
+
+      - name: Install dependencies and build CSS (root)
+        run: |
+          npm ci
+          npm run build-css
+
       - name: Install dependencies and build Storybook (app)
         run: |
           cd app
