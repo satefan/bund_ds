@@ -1,4 +1,4 @@
-name: CI
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -10,14 +10,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@main
-      - uses: actions/setup-node@v2
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
           node-version: '16'
-      - run: npm install
-      - run: npm run build
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+
+      - name: Install dependencies and build CSS (root)
+        run: |
+          npm ci
+          npm run build-css
+
+      - name: Install dependencies and build Storybook (app)
+        run: |
+          cd app
+          npm ci
+          npm run build-storybook
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: ./app/nuxt-storybook # The folder that the build-storybook script generates files.
+          CLEAN: true # Automatically remove deleted files from the deploy branch
