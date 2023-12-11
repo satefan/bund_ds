@@ -34,5 +34,6 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           BRANCH: main # The branch the action should deploy to.
-          FOLDER: ./app/.nuxt-storybook # The folder that the build-storybook script generates files.
+          FOLDER: docs-build # The folder that the build-storybook script generates files.
           CLEAN: true # Automatically remove deleted files from the deploy branch
+          TARGET_FOLDER: docs
