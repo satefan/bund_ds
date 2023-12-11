@@ -16,17 +16,11 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '16'
-
-      - name: Install dependencies and build CSS (root)
-        run: |
-          npm ci
-          npm run build-css
-
       - name: Install dependencies and build Storybook (app)
         run: |
           cd app
           npm ci
-          npm run build-storybook
+          npm run build
           ls -la # List the contents of the current directory
 
       - name: Deploy 🚀
@@ -34,4 +28,4 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           BRANCH: main
-          FOLDER: ./app/dist
+          FOLDER: ./app/storybook-static
