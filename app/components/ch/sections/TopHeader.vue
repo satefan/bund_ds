@@ -1,11 +1,9 @@
 <template>
   <div class="top-header">
-    <div
-      class="top-header__mobile-title"
-      aria-hidden="true"
-    >
+    <div class="top-header__mobile-title" aria-hidden="true">
       <div class="container container--flex">
-        Eidgenössisches Departement für Verteidigung, <br/>Bevölkerungsschutz und Sport
+        Eidgenössisches Departement für Verteidigung, <br />Bevölkerungsschutz
+        und Sport
       </div>
     </div>
     <div class="container container--flex">
@@ -24,7 +22,10 @@
       <div class="top-header__right">
         <MetaNavigation context="desktop" :isFreebrand="isFreebrand" />
         <SearchMain />
-        <LanguageSwitcher v-if="isFreebrand && screenSize <= 1023" type="outline" />
+        <LanguageSwitcher
+          v-if="isFreebrand && screenSize <= 1023"
+          type="outline"
+        />
         <Burger
           @click.native="toggleMobileMenu()"
           :isOpen="getMobileMenuIsOpen()"
@@ -35,9 +36,9 @@
 </template>
 
 <script>
-import Logo from '~/components/ch/components/Logo.vue';
-import Burger from '~/components/ch/components/Burger.vue';
-import SearchMain from '~/components/ch/components/SearchMain.vue';
+import Logo from '~/components/ch/components/Logo.vue'
+import Burger from '~/components/ch/components/Burger.vue'
+import SearchMain from '~/components/ch/components/SearchMain.vue'
 import MetaNavigation from '../navigations/MetaNavigation.vue'
 import LanguageSwitcher from '../components/LanguageSwitcher'
 
@@ -46,38 +47,39 @@ export default {
   props: {
     overrideLogoForPrint: {
       type: String,
-      default: ''
+      default: '',
     },
     isFreebrand: {
       type: Boolean,
-      default: false
+      default: false,
+    },
+  },
+  data() {
+    return {
+      screenSize: 0,
     }
   },
-  data () {
-    return {
-      screenSize: 0
-    }},
   components: {
     Logo,
     Burger,
     SearchMain,
     MetaNavigation,
-    LanguageSwitcher
+    LanguageSwitcher,
   },
-  created () {
+  created() {
     this.resizeWindow()
     window.addEventListener('resize', this.resizeWindow)
   },
   methods: {
-    toggleMobileMenu () {
+    toggleMobileMenu() {
       this.$store.dispatch('layout/toggleMobileMenu')
     },
-    getMobileMenuIsOpen () {
+    getMobileMenuIsOpen() {
       return this.$store.getters['layout/getMobileMenuIsOpen']
     },
-    resizeWindow () {
+    resizeWindow() {
       this.screenSize = document.body.clientWidth
     },
-  }
-};
+  },
+}
 </script>
