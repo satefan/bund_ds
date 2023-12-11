@@ -1,5 +1,11 @@
 # Design System for the Swiss Confederation
 
+:warning: **This repository is not maintained anymore.** 
+
+The new repository (https://github.com/swiss/designsystem) is now private.
+
+Please contact <a href="mailto:Davy.Augier@bk.admin.ch">Davy.Augier@bk.admin.ch</a> to request an access.
+
 ## Purpose
 
 Delivering HTML structures, CSS assets and design elements to build frontends for the Swiss Administration websites.
