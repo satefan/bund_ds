@@ -17,20 +17,14 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Install dependencies and build CSS (root)
+      - name: Install dependencies and build static storybook
         run: |
+          cd app
           npm ci
-          npm run build-css
-
-      - name: Install dependencies and build Storybook (app)
-        run: |
-          npm ci
-          npm run build
+          npm run build-storybook
           ls -la # List the contents of the current directory
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.5
-        with:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
-          BRANCH: main
-          FOLDER: ./app/storybook-static
+          - name: Deploy to GitHub Pages
+          uses: JamesIves/github-pages-deploy-action@v4
+          with:
+            folder: /app/storybook-static
