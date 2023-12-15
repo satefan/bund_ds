@@ -19,8 +19,8 @@ jobs:
 
       - name: Install dependencies and build static storybook
         run: |
+          npm install
           cd app
-          npm ci
           npm run build-storybook
           ls -la # List the contents of the current directory
 
