@@ -27,4 +27,4 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: ./app/storybook-static
+          folder: bund_ds/app/storybook-static
